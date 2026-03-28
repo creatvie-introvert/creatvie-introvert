@@ -1,128 +1,140 @@
-```
-==================================================================================================.
-S   |           |     |         |             |       |           |   |     |             |       |
-.=. | ========= | .=. | ===== | |== .=======. '=. | | '=. .==== | | | | | | | ============' ====. |
-| | |   |   |     | | |   |   | |   |   |   |   | | |   | |     |   | | | | |       |         | | |
-| | |== | | '=====| | |=. | .=' | .=' | '== |== | | |== '=' .===+===| | | | '=. ==. | ======. | | |
-| | |   | |   |   |   | | | |   | |   |     |   | | |       |   |   | | | |   |   |     |   |   | |
-| | | ==' |== | .=' .=' | | | ==' | .=======' .=' | '=======' | | | | | | |== | .=======' | '===| |
-| | |     |   | |   |     | |     | |   |     |   |   | |     | | | | | | |   | |         |     | |
-| | '=====' .=' | ========' |=====' | | | =========== | | ====| | | | '=' | ====' .============ | |
-|           |               |         |               |       |   |       |       |               E
-'==================================================================================================
-```
+# Leanne Bedeau-Rogers
 
+**Full Stack Developer · UX-Focused Designer · Open to Freelance Opportunities**
 
+I build modern, user-friendly websites and web applications with a strong focus on **clarity, accessibility, responsive design, and practical usability**.
 
-# ⸸ **LEANNE BEDEAU-ROGERS**  
-### *Creative Technologist · Full-Stack Dev in Training · Builder of Dystopian Worlds*
+My work combines **front-end development, full-stack problem solving, and thoughtful UX/UI design**. I enjoy creating digital experiences that are clean, engaging, and built with purpose — whether that is a business website, a proof-of-concept platform, or an interactive creative project.
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  
-**FILE: PRFL-0425-LBXR**  
-**CLASSIFICATION: OPEN SOURCE / OBSERVATION PERMITTED**  
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  
-
-In the fractured network where systems decay and stories glitch in the dark,  
-I create things — interfaces, engines, puzzles, and fictional universes.
-
-I am a **self-taught full-stack developer**, a **UX/UI architect**, and a **graphic-novel world-builder**, currently studying at **Code Institute**.  
-My work blends **technology, design, and narrative myth-making** into digital artifacts that feel recovered from a future that never happened.
+I am currently open to **freelance opportunities**, especially projects involving **small business websites, landing pages, portfolio sites, redesigns, and custom front-end or full-stack builds**.
 
 ---
 
-# ╔═◆ SKILL UPGRADE LOG ═════════════════════╗  
-> *Education is resistance. Creation is survival.*  
-# ╚══════════════════════════════════════════╝
+## Tech Stack
 
-🜁 **Full Stack Engineering:** JavaScript · Python · Flask/Django · REST APIs  
-🜁 **UX/UI Systems:** design languages, accessibility, Figma architectures  
-🜁 **AI Workflow Engineering:** ComfyUI pipelines · automation · prompt logic  
-🜁 **World-Building Tech:** lore systems · visual continuity · narrative engines  
-🜁 **Front-End Craft:** micro-interactions · motion logic · responsive design  
+**Front End**  
+HTML · CSS · JavaScript · Bootstrap
 
-**Operational Tools:**  
-`HTML` `CSS` `JavaScript` `Python` `Bootstrap`  
-`Figma` `Adobe CC` `Git` `VS Code`  
-`ChatGPT` `RunDiffusion` `Dezgo` `Netlify`  
+**Back End**  
+Python · Django · PostgreSQL
 
----
+**Design & UX**  
+Figma · Responsive Design · Accessibility · Wireframing · UI Planning
 
-# ╔═◆ PROJECT DOSSIERS (ACTIVE ARCHIVE) ═══════╗  
-> *Some files are stamped COMPLETE. Others remain under construction.*  
-# ╚════════════════════════════════════════════╝
-
-### ◈ **WordWeaver — Logic Grid Terminal**  
-`[ ✓ FILE STATUS: COMPLETE ]`  
-An interactive crossword engine weaving external clues into algorithmic lattice structures.  
-*Recovered artifact: functional.*
+**Tools & Workflow**  
+Git · GitHub · VS Code · Heroku · Netlify · Cloudinary
 
 ---
 
-### ◈ **1984.1 — Narrative Microsite**  
-`[ ✓ FILE STATUS: COMPLETE ]`  
-A dystopian micro-experience: surveillance-coded UI, ambient tension, stark visuals.
+## Featured Projects
+
+### Portfolio Website
+My portfolio website showcasing my work, skills, and approach as a developer and designer. This is an evolving project that I continue to refine and improve over time.
+
+**Live Site:** [leannebedeaurogers.com](https://leannebedeaurogers.com/)  
+**Repository:** [portfolio-2026](https://github.com/creatvie-introvert/portfolio-2026)
 
 ---
 
-### ◈ **SudoLogic — Puzzle System**  
-`[ … STATUS: IN PROGRESS ]`  
-A minimalist logic-grid puzzle interface; designed from Figma schematics.
+### BTR Directory MVP
+A proof-of-concept Build-to-Rent directory platform designed to help users browse developments and explore rental options. This project was built as an MVP and will later be redesigned, rebuilt, and developed further into a commercial business.
+
+**Live Site:** [btr-directory-dc12b60dacd4.herokuapp.com](https://btr-directory-dc12b60dacd4.herokuapp.com/)  
+**Repository:** [btr-directory-mvp](https://github.com/creatvie-introvert/btr-directory-mvp)
 
 ---
 
-### ◈ **Marilyn Bedeau Therapy Site**  
-`[ … STATUS: IN PROGRESS ]`  
-A calm, accessible, semantic web space — a refuge among corrupted signals.
+### UK Money Reality Checker
+A practical web tool designed to help users reflect on income, spending, and financial reality in a more grounded and accessible way.
+
+**Live Site:** [ukmoneyreality.co.uk](http://ukmoneyreality.co.uk)  
+**Repository:** [uk-money-reality-checker](https://github.com/creatvie-introvert/uk-money-reality-checker)
 
 ---
 
-### ◈ **VAX — Graphic Novel Universe**  
-`[ … STATUS: IN PROGRESS ]`  
-A multi-timeline dystopian world built through AI-augmented illustration and lore engines.
+### Tashan.co
+A personal landing page project designed to create a clean, focused, and polished online presence.
+
+**Live Site:** [tashan.co](http://tashan.co)  
+**Repository:** [tashan-co](https://github.com/creatvie-introvert/tashan-co)
 
 ---
 
-### ◈ **Toolsyft — AI Directory for Creators**  
-`[ … STATUS: IN PROGRESS ]`  
-A curated AI survival kit for creators navigating the modern digital wasteland.
+### 1984.1
+A dystopian front-end project exploring immersive storytelling through visual design, thematic interface choices, and strong creative direction.
+
+**Live Site:** [1984.1 Live Site](https://creatvie-introvert.github.io/1984-1/)  
+**Repository:** [1984-1](https://github.com/creatvie-introvert/1984-1)
 
 ---
 
-# ╔═◆ CURRENT DEEP-BUILD OPERATIONS ═══════════╗  
-# ╚════════════════════════════════════════════╝
+### WordWeaver
+An interactive crossword game built to combine logic, gameplay, and a more dynamic user experience in the browser.
 
-⚙ **AI Day-Trading System** — signal detection, chart logic, dashboard UI  
-⚙ **Once Upon a Theory** — community mythology engine  
-⚙ **Indie Graphic Novel Hub** — creator-driven narrative platform  
-
----
-
-# ╔═◆ DESIGN CODE OF CONDUCT ══════════════════╗  
-# ╚════════════════════════════════════════════╝
-
-✦ user-first  
-✦ accessible, inclusive  
-✦ high-contrast dystopian clarity  
-✦ narrative-driven UI logic  
-✦ modular, scalable systems  
+**Live Site:** [WordWeaver Live Site](https://creatvie-introvert.github.io/wordweaver/)  
+**Repository:** [wordweaver](https://github.com/creatvie-introvert/wordweaver/)
 
 ---
 
-# ╔═◆ LONG-TERM OBJECTIVES (STRATEGIC) ════════╗  
-# ╚════════════════════════════════════════════╝
+## What I Do
 
-▣ Deploy a full **AI Trading Platform**  
-▣ Become a **freelance dev + UX designer**  
-▣ Publish **VAX**, the graphic novel  
-▣ Build a fully immersive portfolio universe  
+I build digital products that are:
+
+- responsive
+- accessible
+- user-friendly
+- visually clear
+- well-structured
+- designed with both function and user experience in mind
+
+I am especially interested in projects such as:
+
+- small business websites
+- portfolio websites
+- landing pages
+- front-end builds
+- website redesigns
+- UX/UI improvements
+- proof-of-concept products
+- custom web experiences
 
 ---
 
-# ╔═◆ CONTACT PROTOCOL ═════════════════════════╗  
-# ╚════════════════════════════════════════════╝
+## Working Style
 
-I collaborate on—  
-**Web Apps · UX Systems · Illustrated Digital Worlds · AI-Augmented Tools**
+I care about creating websites and applications that not only work well, but also feel professional, intentional, and easy to use.
 
-**Transmission ends.**  
-More files will appear in the archives soon.
+My approach combines:
+
+- thoughtful layout and structure
+- responsive, mobile-first design
+- accessibility-conscious decisions
+- clean visual presentation
+- practical problem solving
+
+---
+
+## Current Focus
+
+Right now I am focused on:
+
+- building high-quality freelance-ready work
+- growing my full-stack development skills
+- creating useful digital products with commercial potential
+- improving and expanding my portfolio
+- continuing to develop projects that blend strong UX with solid development
+
+---
+
+## Let’s Connect
+
+I’m currently looking to connect with **freelance clients, collaborators, and opportunities** in web development and UX-focused digital work.
+
+- **Portfolio:** [leannebedeaurogers.com](https://leannebedeaurogers.com/)
+- **Email:** [hello@leannebedeaurogers.com](mailto:hello@leannebedeaurogers.com)
+
+---
+
+## A Bit More About Me
+
+Alongside development and UX design, I’m also drawn to creative and concept-driven digital projects. That creative perspective influences how I build: I like creating experiences that are not only functional, but also clear, engaging, and memorable.

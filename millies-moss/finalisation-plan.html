@@ -41,7 +41,7 @@ footer{padding:0 0 32px;color:var(--muted);font-size:12px}
 <a class="chip" href="#catalogue">Catalogue</a><a class="chip" href="#content">Content</a><a class="chip" href="#apps">Apps & platform</a><a class="chip" href="#qa">QA</a><a class="chip" href="#seo">SEO & UX</a><a class="chip" href="#technical">Technical</a>
 </nav>
 <section class="progress-card" aria-live="polite">
-  <div class="progress-title">Overall progress</div>
+  <div class="progress-title">Overall progress <span id="sync-status" style="font-size:11px;font-weight:700;color:var(--muted);margin-left:8px">Connecting…</span></div>
   <div class="progress-meta"><strong id="completed-count">0</strong> of <strong id="total-count">26</strong> complete · <span id="remaining-count">26</span> remaining</div>
   <div class="progress-track" aria-hidden="true"><span class="progress-bar" id="progress-bar"></span></div>
   <div class="progress-actions"><button class="reset-progress" id="reset-progress" type="button">Reset completion marks</button></div>
@@ -76,27 +76,33 @@ footer{padding:0 0 32px;color:var(--muted);font-size:12px}
 <footer class="wrap">Millie's Moss · Finalisation & Optimisation Plan · Canonical project document</footer>
 <script>
 (function(){
-  const STORAGE_KEY = 'millies-moss-finalisation-progress-v1';
+  const SUPABASE_URL = 'https://lyrpaysjjssrtuqfbarl.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx5cnBheXNqanNzcnR1cWZiYXJsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwMjQ0NDIsImV4cCI6MjEwNTYwMDQ0Mn0.fZAmUgTOp7RhVxPSKJPU83meTbCUVXRFI4VpFNiOcns';
+  const BOARD_KEY = 'millies-moss-finalisation';
   const tasks = Array.from(document.querySelectorAll('.task'));
   const completedCount = document.getElementById('completed-count');
   const totalCount = document.getElementById('total-count');
   const remainingCount = document.getElementById('remaining-count');
   const progressBar = document.getElementById('progress-bar');
   const resetBtn = document.getElementById('reset-progress');
+  const syncStatus = document.getElementById('sync-status');
+  let applyingRemote = false;
+
+  const headers = {
+    'apikey': SUPABASE_ANON_KEY,
+    'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+    'Content-Type': 'application/json'
+  };
 
   function taskId(task){
     const num = task.querySelector('.num');
     return num ? num.textContent.trim() : '';
   }
 
-  function loadState(){
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
-    catch(e){ return {}; }
-  }
-
-  function saveState(state){
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); }
-    catch(e){}
+  function setSyncStatus(text, ok){
+    if (!syncStatus) return;
+    syncStatus.textContent = text;
+    syncStatus.style.color = ok ? 'var(--pine2)' : '#9a5b46';
   }
 
   function renderStats(){
@@ -108,50 +114,95 @@ footer{padding:0 0 32px;color:var(--muted);font-size:12px}
     progressBar.style.width = (total ? Math.round((complete / total) * 100) : 0) + '%';
   }
 
-  const state = loadState();
+  function applyState(rows){
+    const map = new Map((rows || []).map(row => [String(row.task_id), !!row.completed]));
+    applyingRemote = true;
+    tasks.forEach(task => {
+      const id = taskId(task);
+      const checkbox = task.querySelector('.task-check');
+      if (!checkbox || !id) return;
+      const checked = map.get(id) === true;
+      checkbox.checked = checked;
+      task.classList.toggle('completed', checked);
+    });
+    applyingRemote = false;
+    renderStats();
+  }
+
+  async function loadSharedState(showStatus){
+    try {
+      if (showStatus) setSyncStatus('Syncing…', true);
+      const url = SUPABASE_URL + '/rest/v1/checklist_tasks?board_key=eq.' + encodeURIComponent(BOARD_KEY) + '&select=task_id,completed,updated_at';
+      const response = await fetch(url, { headers });
+      if (!response.ok) throw new Error('Load failed: ' + response.status);
+      const rows = await response.json();
+      applyState(rows);
+      setSyncStatus('Shared · synced', true);
+    } catch (error) {
+      console.error(error);
+      setSyncStatus('Sync unavailable', false);
+    }
+  }
+
+  async function saveTask(id, completed){
+    try {
+      setSyncStatus('Saving…', true);
+      const url = SUPABASE_URL + '/rest/v1/checklist_tasks?board_key=eq.' + encodeURIComponent(BOARD_KEY) + '&task_id=eq.' + encodeURIComponent(id);
+      const response = await fetch(url, {
+        method: 'PATCH',
+        headers: { ...headers, 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ completed: completed, updated_at: new Date().toISOString() })
+      });
+      if (!response.ok) throw new Error('Save failed: ' + response.status);
+      setSyncStatus('Shared · synced', true);
+    } catch (error) {
+      console.error(error);
+      setSyncStatus('Save failed', false);
+      await loadSharedState(false);
+    }
+  }
 
   tasks.forEach(task => {
     const id = taskId(task);
     const checkbox = task.querySelector('.task-check');
     if (!checkbox || !id) return;
 
-    if (state[id]) {
-      checkbox.checked = true;
-      task.classList.add('completed');
-    }
-
     checkbox.addEventListener('click', function(e){
       e.stopPropagation();
     });
 
-    checkbox.addEventListener('change', function(e){
+    checkbox.addEventListener('change', async function(e){
       e.stopPropagation();
+      if (applyingRemote) return;
       task.classList.toggle('completed', checkbox.checked);
-      const next = loadState();
-      if (checkbox.checked) next[id] = true;
-      else delete next[id];
-      saveState(next);
       renderStats();
+      await saveTask(id, checkbox.checked);
     });
 
     const label = checkbox.closest('.check-wrap');
-    if (label) {
-      label.addEventListener('click', function(e){ e.stopPropagation(); });
+    if (label) label.addEventListener('click', function(e){ e.stopPropagation(); });
+  });
+
+  resetBtn.addEventListener('click', async function(){
+    if (!confirm('Clear all shared completion marks for both you and Tashan?')) return;
+    try {
+      setSyncStatus('Resetting…', true);
+      const url = SUPABASE_URL + '/rest/v1/checklist_tasks?board_key=eq.' + encodeURIComponent(BOARD_KEY);
+      const response = await fetch(url, {
+        method: 'PATCH',
+        headers: { ...headers, 'Prefer': 'return=minimal' },
+        body: JSON.stringify({ completed: false, updated_at: new Date().toISOString() })
+      });
+      if (!response.ok) throw new Error('Reset failed: ' + response.status);
+      await loadSharedState(false);
+    } catch (error) {
+      console.error(error);
+      setSyncStatus('Reset failed', false);
     }
   });
 
-  resetBtn.addEventListener('click', function(){
-    if (!confirm('Clear all completion marks for this checklist?')) return;
-    try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
-    tasks.forEach(task => {
-      task.classList.remove('completed');
-      const checkbox = task.querySelector('.task-check');
-      if (checkbox) checkbox.checked = false;
-    });
-    renderStats();
-  });
-
-  renderStats();
+  loadSharedState(true);
+  setInterval(function(){ loadSharedState(false); }, 5000);
 })();
 </script>
 </body>
